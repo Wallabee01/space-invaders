@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg4sfkf77xq2u"]
+
+[ext_resource type="Texture2D" uid="uid://bof23n16hil4" path="res://assets/bunker/bottom_block_01.png" id="1_1dxpk"]
+[ext_resource type="Texture2D" uid="uid://vtsgp7ydgldi" path="res://assets/bunker/corner_bottom_01.png" id="2_q3yps"]
+[ext_resource type="Texture2D" uid="uid://dq4pj5fea683j" path="res://assets/bunker/corner_left_01.png" id="3_uvgbs"]
+[ext_resource type="Texture2D" uid="uid://2tu8t3l1alal" path="res://assets/bunker/middle_block_01.png" id="4_njhbq"]
+
+[node name="Bunker" type="Area2D"]
+position = Vector2(-16, 5)
+
+[node name="BottomLeftSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1dxpk")
+
+[node name="BottomLeftSprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
+texture = ExtResource("1_1dxpk")
+
+[node name="BottomLeftCornerSprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, -9)
+texture = ExtResource("2_q3yps")
+
+[node name="BottomLeftTopCornerSprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -17)
+texture = ExtResource("3_uvgbs")
+
+[node name="TopLeftSprite2D" type="Sprite2D" parent="."]
+position = Vector2(7, -16)
+rotation = 1.5708
+texture = ExtResource("1_1dxpk")
+
+[node name="BottomLeftSprite2D3" type="Sprite2D" parent="."]
+position = Vector2(32, 0)
+texture = ExtResource("1_1dxpk")
+flip_h = true
+
+[node name="BottomLeftSprite2D4" type="Sprite2D" parent="."]
+position = Vector2(32, -10)
+texture = ExtResource("1_1dxpk")
+flip_h = true
+
+[node name="BottomLeftCornerSprite2D2" type="Sprite2D" parent="."]
+position = Vector2(24, -9)
+texture = ExtResource("2_q3yps")
+flip_h = true
+
+[node name="BottomLeftTopCornerSprite2D2" type="Sprite2D" parent="."]
+position = Vector2(33, -17)
+texture = ExtResource("3_uvgbs")
+flip_h = true
+
+[node name="TopLeftSprite2D2" type="Sprite2D" parent="."]
+position = Vector2(25, -16)
+rotation = 1.5708
+texture = ExtResource("1_1dxpk")
+flip_h = true
+
+[node name="BottomLeftSprite2D5" type="Sprite2D" parent="."]
+position = Vector2(16, -16)
+texture = ExtResource("4_njhbq")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://qbrspbs7l0uo"]
+
+[ext_resource type="Texture2D" uid="uid://kogbvkfl7cjv" path="res://assets/invaders/invader_02.png" id="1_tfube"]
+
+[node name="Invader02" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tfube")
