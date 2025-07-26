@@ -1,0 +1,201 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwuxnxewxup6"]
+
+[ext_resource type="Script" uid="uid://bxapase1e8ef0" path="res://src/scenes/invaders/invaders.gd" id="1_foboy"]
+[ext_resource type="PackedScene" uid="uid://2cma01cusojw" path="res://src/scenes/invaders/invader_01.tscn" id="1_qeo7q"]
+[ext_resource type="PackedScene" uid="uid://qbrspbs7l0uo" path="res://src/scenes/invaders/invader_02.tscn" id="2_foboy"]
+[ext_resource type="AudioStream" uid="uid://c6fcitff7qakh" path="res://assets/audio/sfx/tone1.ogg" id="2_ld5n6"]
+[ext_resource type="PackedScene" uid="uid://qqdh7hhudr21" path="res://src/scenes/invaders/invader_03.tscn" id="3_ld5n6"]
+
+[node name="Invaders" type="Node2D"]
+script = ExtResource("1_foboy")
+
+[node name="MoveStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_ld5n6")
+
+[node name="MoveTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 4.0
+autostart = true
+
+[node name="Invader101" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(28, 120)
+
+[node name="Invader102" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(52, 120)
+
+[node name="Invader103" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(76, 120)
+
+[node name="Invader104" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(100, 120)
+
+[node name="Invader105" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(124, 120)
+
+[node name="Invader106" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(148, 120)
+
+[node name="Invader107" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(172, 120)
+
+[node name="Invader108" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(196, 120)
+
+[node name="Invader109" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(220, 120)
+
+[node name="Invader110" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(244, 120)
+
+[node name="Invader111" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(268, 120)
+
+[node name="Invader112" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(292, 120)
+
+[node name="Invader121" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(28, 100)
+
+[node name="Invader122" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(52, 100)
+
+[node name="Invader123" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(76, 100)
+
+[node name="Invader124" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(100, 100)
+
+[node name="Invader125" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(124, 100)
+
+[node name="Invader126" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(148, 100)
+
+[node name="Invader127" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(172, 100)
+
+[node name="Invader128" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(196, 100)
+
+[node name="Invader129" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(220, 100)
+
+[node name="Invader130" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(244, 100)
+
+[node name="Invader131" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(268, 100)
+
+[node name="Invader132" parent="." instance=ExtResource("1_qeo7q")]
+position = Vector2(292, 100)
+
+[node name="Invader141" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(28, 80)
+
+[node name="Invader142" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(52, 80)
+
+[node name="Invader143" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(76, 80)
+
+[node name="Invader144" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(100, 80)
+
+[node name="Invader145" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(124, 80)
+
+[node name="Invader146" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(148, 80)
+
+[node name="Invader147" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(172, 80)
+
+[node name="Invader148" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(196, 80)
+
+[node name="Invader149" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(220, 80)
+
+[node name="Invader150" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(244, 80)
+
+[node name="Invader151" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(268, 80)
+
+[node name="Invader152" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(292, 80)
+
+[node name="Invader161" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(28, 60)
+
+[node name="Invader162" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(52, 60)
+
+[node name="Invader163" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(76, 60)
+
+[node name="Invader164" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(100, 60)
+
+[node name="Invader165" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(124, 60)
+
+[node name="Invader166" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(148, 60)
+
+[node name="Invader167" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(172, 60)
+
+[node name="Invader168" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(196, 60)
+
+[node name="Invader169" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(220, 60)
+
+[node name="Invader170" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(244, 60)
+
+[node name="Invader171" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(268, 60)
+
+[node name="Invader172" parent="." instance=ExtResource("2_foboy")]
+position = Vector2(292, 60)
+
+[node name="Invader181" parent="." instance=ExtResource("3_ld5n6")]
+position = Vector2(28, 40)
+
+[node name="Invader182" parent="." instance=ExtResource("3_ld5n6")]
+position = Vector2(52, 40)
+
+[node name="Invader183" parent="." instance=ExtResource("3_ld5n6")]
+position = Vector2(76, 40)
+
+[node name="Invader184" parent="." instance=ExtResource("3_ld5n6")]
+position = Vector2(100, 40)
+
+[node name="Invader185" parent="." instance=ExtResource("3_ld5n6")]
+position = Vector2(124, 40)
+
+[node name="Invader186" parent="." instance=ExtResource("3_ld5n6")]
+position = Vector2(148, 40)
+
+[node name="Invader187" parent="." instance=ExtResource("3_ld5n6")]
+position = Vector2(172, 40)
+
+[node name="Invader188" parent="." instance=ExtResource("3_ld5n6")]
+position = Vector2(196, 40)
+
+[node name="Invader189" parent="." instance=ExtResource("3_ld5n6")]
+position = Vector2(220, 40)
+
+[node name="Invader190" parent="." instance=ExtResource("3_ld5n6")]
+position = Vector2(244, 40)
+
+[node name="Invader191" parent="." instance=ExtResource("3_ld5n6")]
+position = Vector2(268, 40)
+
+[node name="Invader192" parent="." instance=ExtResource("3_ld5n6")]
+position = Vector2(292, 40)
+
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

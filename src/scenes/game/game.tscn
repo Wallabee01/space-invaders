@@ -1,40 +1,40 @@
-[gd_scene load_steps=7 format=3 uid="uid://own8xi1mum0b"]
+[gd_scene load_steps=11 format=3 uid="uid://own8xi1mum0b"]
 
+[ext_resource type="Script" uid="uid://c5pe8rwxdmawq" path="res://src/scenes/game/game.gd" id="1_i43ty"]
 [ext_resource type="PackedScene" uid="uid://bg4sfkf77xq2u" path="res://src/scenes/bunker/bunker.tscn" id="1_uitmv"]
+[ext_resource type="AudioStream" uid="uid://luekux2bwhey" path="res://assets/audio/sfx/gameover4.ogg" id="2_3fbob"]
 [ext_resource type="PackedScene" uid="uid://ciblq0yi0tux7" path="res://src/scenes/player/player.tscn" id="2_5fwnx"]
-[ext_resource type="PackedScene" uid="uid://2cma01cusojw" path="res://src/scenes/invaders/invader_01.tscn" id="3_3fbob"]
-[ext_resource type="PackedScene" uid="uid://qbrspbs7l0uo" path="res://src/scenes/invaders/invader_02.tscn" id="4_14lda"]
-[ext_resource type="PackedScene" uid="uid://qqdh7hhudr21" path="res://src/scenes/invaders/invader_03.tscn" id="5_p0lgu"]
-[ext_resource type="PackedScene" uid="uid://v0yfkoainxqt" path="res://src/scenes/invaders/spaceship.tscn" id="6_jvdw2"]
+[ext_resource type="AudioStream" uid="uid://dikuydw7wmktu" path="res://assets/audio/sfx/upgrade4.ogg" id="2_14lda"]
+[ext_resource type="PackedScene" uid="uid://dukjruu13k03e" path="res://src/scenes/ui/pause_screen.tscn" id="2_uitmv"]
+[ext_resource type="PackedScene" uid="uid://2w788sq5d482" path="res://src/scenes/ui/ui.tscn" id="2_viayp"]
+[ext_resource type="PackedScene" uid="uid://cwuxnxewxup6" path="res://src/scenes/invaders/invaders.tscn" id="3_75q6j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uitmv"]
+size = Vector2(8, 184)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5fwnx"]
+size = Vector2(320, 8)
 
 [node name="Game" type="Node"]
+script = ExtResource("1_i43ty")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_14lda")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 48
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 48
-theme_override_constants/margin_bottom = 8
+[node name="GameOverStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_3fbob")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 0
+[node name="SpaceshipTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 30.0
+one_shot = true
+autostart = true
 
-[node name="ScoreLabel" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-text = "SCORE: 1,997"
+[node name="CanvasLayer" parent="." instance=ExtResource("2_viayp")]
 
-[node name="LifeLabel" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "LIVES"
-horizontal_alignment = 2
+[node name="PauseScreen" parent="." instance=ExtResource("2_uitmv")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -44,7 +44,17 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.046875, 0.046875, 0.046875, 1)
 
+[node name="Player" parent="." instance=ExtResource("2_5fwnx")]
+unique_name_in_owner = true
+position = Vector2(30, 174)
+
+[node name="InvadersParent" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Invaders" parent="InvadersParent" instance=ExtResource("3_75q6j")]
+
 [node name="Bunkers" type="Node2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(22, 153)
 
 [node name="Bunker" parent="Bunkers" instance=ExtResource("1_uitmv")]
@@ -67,190 +77,35 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(258, 5)
 scale = Vector2(0.5, 0.5)
 
-[node name="Player" parent="." instance=ExtResource("2_5fwnx")]
-position = Vector2(30, 174)
+[node name="Lasers" type="Node2D" parent="."]
+unique_name_in_owner = true
 
-[node name="Invaders" type="Node2D" parent="."]
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
 
-[node name="Invader101" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(28, 120)
+[node name="LeftWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-4, 92)
+shape = SubResource("RectangleShape2D_uitmv")
 
-[node name="Invader102" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(52, 120)
+[node name="RightWall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(324, 92)
+shape = SubResource("RectangleShape2D_uitmv")
 
-[node name="Invader103" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(76, 120)
+[node name="LaserDeathArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 24
 
-[node name="Invader104" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(100, 120)
+[node name="TopWall" type="CollisionShape2D" parent="LaserDeathArea2D"]
+position = Vector2(160, -4)
+shape = SubResource("RectangleShape2D_5fwnx")
 
-[node name="Invader105" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(124, 120)
+[node name="BottomWall" type="CollisionShape2D" parent="LaserDeathArea2D"]
+position = Vector2(160, 184)
+shape = SubResource("RectangleShape2D_5fwnx")
 
-[node name="Invader106" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(148, 120)
+[node name="SpaceshipParent" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(28, 32)
 
-[node name="Invader107" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(172, 120)
-
-[node name="Invader108" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(196, 120)
-
-[node name="Invader109" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(220, 120)
-
-[node name="Invader110" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(244, 120)
-
-[node name="Invader111" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(268, 120)
-
-[node name="Invader112" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(292, 120)
-
-[node name="Invader121" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(28, 100)
-
-[node name="Invader122" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(52, 100)
-
-[node name="Invader123" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(76, 100)
-
-[node name="Invader124" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(100, 100)
-
-[node name="Invader125" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(124, 100)
-
-[node name="Invader126" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(148, 100)
-
-[node name="Invader127" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(172, 100)
-
-[node name="Invader128" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(196, 100)
-
-[node name="Invader129" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(220, 100)
-
-[node name="Invader130" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(244, 100)
-
-[node name="Invader131" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(268, 100)
-
-[node name="Invader132" parent="Invaders" instance=ExtResource("3_3fbob")]
-position = Vector2(292, 100)
-
-[node name="Invader141" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(28, 80)
-
-[node name="Invader142" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(52, 80)
-
-[node name="Invader143" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(76, 80)
-
-[node name="Invader144" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(100, 80)
-
-[node name="Invader145" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(124, 80)
-
-[node name="Invader146" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(148, 80)
-
-[node name="Invader147" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(172, 80)
-
-[node name="Invader148" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(196, 80)
-
-[node name="Invader149" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(220, 80)
-
-[node name="Invader150" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(244, 80)
-
-[node name="Invader151" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(268, 80)
-
-[node name="Invader152" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(292, 80)
-
-[node name="Invader161" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(28, 60)
-
-[node name="Invader162" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(52, 60)
-
-[node name="Invader163" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(76, 60)
-
-[node name="Invader164" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(100, 60)
-
-[node name="Invader165" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(124, 60)
-
-[node name="Invader166" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(148, 60)
-
-[node name="Invader167" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(172, 60)
-
-[node name="Invader168" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(196, 60)
-
-[node name="Invader169" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(220, 60)
-
-[node name="Invader170" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(244, 60)
-
-[node name="Invader171" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(268, 60)
-
-[node name="Invader172" parent="Invaders" instance=ExtResource("4_14lda")]
-position = Vector2(292, 60)
-
-[node name="Invader181" parent="Invaders" instance=ExtResource("5_p0lgu")]
-position = Vector2(28, 40)
-
-[node name="Invader182" parent="Invaders" instance=ExtResource("5_p0lgu")]
-position = Vector2(52, 40)
-
-[node name="Invader183" parent="Invaders" instance=ExtResource("5_p0lgu")]
-position = Vector2(76, 40)
-
-[node name="Invader184" parent="Invaders" instance=ExtResource("5_p0lgu")]
-position = Vector2(100, 40)
-
-[node name="Invader185" parent="Invaders" instance=ExtResource("5_p0lgu")]
-position = Vector2(124, 40)
-
-[node name="Invader186" parent="Invaders" instance=ExtResource("5_p0lgu")]
-position = Vector2(148, 40)
-
-[node name="Invader187" parent="Invaders" instance=ExtResource("5_p0lgu")]
-position = Vector2(172, 40)
-
-[node name="Invader188" parent="Invaders" instance=ExtResource("5_p0lgu")]
-position = Vector2(196, 40)
-
-[node name="Invader189" parent="Invaders" instance=ExtResource("5_p0lgu")]
-position = Vector2(220, 40)
-
-[node name="Invader190" parent="Invaders" instance=ExtResource("5_p0lgu")]
-position = Vector2(244, 40)
-
-[node name="Invader191" parent="Invaders" instance=ExtResource("5_p0lgu")]
-position = Vector2(268, 40)
-
-[node name="Invader192" parent="Invaders" instance=ExtResource("5_p0lgu")]
-position = Vector2(292, 40)
-
-[node name="Spaceship" parent="Invaders" instance=ExtResource("6_jvdw2")]
-position = Vector2(36, 28)
+[connection signal="timeout" from="SpaceshipTimer" to="." method="_on_spaceship_timer_timeout"]
+[connection signal="body_entered" from="LaserDeathArea2D" to="." method="_on_laser_death_area_2d_body_entered"]

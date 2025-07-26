@@ -1,8 +1,49 @@
-[gd_scene load_steps=2 format=3 uid="uid://ciblq0yi0tux7"]
+[gd_scene load_steps=8 format=3 uid="uid://ciblq0yi0tux7"]
 
+[ext_resource type="Script" uid="uid://yjojypa3gsfn" path="res://src/scenes/player/player.gd" id="1_n52bt"]
 [ext_resource type="Texture2D" uid="uid://4pqahyudbi3o" path="res://assets/player/player.png" id="1_swhsd"]
+[ext_resource type="AudioStream" uid="uid://23olrdnrwfac" path="res://assets/audio/sfx/hurt1.ogg" id="2_6gf5d"]
+[ext_resource type="PackedScene" uid="uid://b028hxn38055y" path="res://src/scenes/components/velocity_component.tscn" id="2_cx3ie"]
+[ext_resource type="AudioStream" uid="uid://cgt7dthvbn5vf" path="res://assets/audio/sfx/laser4.ogg" id="3_6gf5d"]
 
-[node name="Player" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n52bt"]
+size = Vector2(22, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cx3ie"]
+size = Vector2(22, 6)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_n52bt")
+
+[node name="HitStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_6gf5d")
+
+[node name="ShootStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_6gf5d")
+
+[node name="ShootTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="VelocityComponent" parent="." instance=ExtResource("2_cx3ie")]
+unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_swhsd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_n52bt")
+
+[node name="DeathArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea2D"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_cx3ie")
+
+[connection signal="body_entered" from="DeathArea2D" to="." method="_on_death_area_2d_body_entered"]

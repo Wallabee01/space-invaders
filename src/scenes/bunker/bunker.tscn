@@ -1,59 +1,216 @@
-[gd_scene load_steps=5 format=3 uid="uid://bg4sfkf77xq2u"]
+[gd_scene load_steps=17 format=3 uid="uid://bg4sfkf77xq2u"]
 
 [ext_resource type="Texture2D" uid="uid://bof23n16hil4" path="res://assets/bunker/bottom_block_01.png" id="1_1dxpk"]
+[ext_resource type="Script" uid="uid://bimi8fetimlua" path="res://src/scenes/bunker/bunker.gd" id="1_q3yps"]
 [ext_resource type="Texture2D" uid="uid://vtsgp7ydgldi" path="res://assets/bunker/corner_bottom_01.png" id="2_q3yps"]
 [ext_resource type="Texture2D" uid="uid://dq4pj5fea683j" path="res://assets/bunker/corner_left_01.png" id="3_uvgbs"]
 [ext_resource type="Texture2D" uid="uid://2tu8t3l1alal" path="res://assets/bunker/middle_block_01.png" id="4_njhbq"]
 
-[node name="Bunker" type="Area2D"]
-position = Vector2(-16, 5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvgbs"]
+size = Vector2(8, 10)
 
-[node name="BottomLeftSprite2D" type="Sprite2D" parent="."]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njhbq"]
+size = Vector2(8, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3q5j5"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2avm"]
+size = Vector2(6, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gssj3"]
+size = Vector2(10, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jxpug"]
+size = Vector2(8, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iw1cg"]
+size = Vector2(8, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vcfp"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eo828"]
+size = Vector2(6, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10rjw"]
+size = Vector2(10, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkm1k"]
+size = Vector2(8, 8)
+
+[node name="Bunker" type="Node2D"]
+script = ExtResource("1_q3yps")
+
+[node name="BottomLeftArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 24
+
+[node name="BottomLeftSprite2D" type="Sprite2D" parent="BottomLeftArea2D"]
+unique_name_in_owner = true
+position = Vector2(0, 1)
 texture = ExtResource("1_1dxpk")
 
-[node name="BottomLeftSprite2D2" type="Sprite2D" parent="."]
-position = Vector2(0, -10)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomLeftArea2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_uvgbs")
+
+[node name="BottomLeftArea2D2" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 24
+
+[node name="BottomLeftSprite2D2" type="Sprite2D" parent="BottomLeftArea2D2"]
+unique_name_in_owner = true
+position = Vector2(0, -9)
 texture = ExtResource("1_1dxpk")
 
-[node name="BottomLeftCornerSprite2D" type="Sprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomLeftArea2D2"]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_njhbq")
+
+[node name="BottomLeftCornerArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 24
+
+[node name="BottomLeftCornerSprite2D" type="Sprite2D" parent="BottomLeftCornerArea2D"]
+unique_name_in_owner = true
 position = Vector2(8, -9)
 texture = ExtResource("2_q3yps")
 
-[node name="BottomLeftTopCornerSprite2D" type="Sprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomLeftCornerArea2D"]
+position = Vector2(8, -9)
+shape = SubResource("RectangleShape2D_3q5j5")
+
+[node name="TopLeftCornerArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 24
+
+[node name="TopLeftCornerSprite2D" type="Sprite2D" parent="TopLeftCornerArea2D"]
+unique_name_in_owner = true
 position = Vector2(-1, -17)
 texture = ExtResource("3_uvgbs")
 
-[node name="TopLeftSprite2D" type="Sprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopLeftCornerArea2D"]
+position = Vector2(-1, -17)
+shape = SubResource("RectangleShape2D_p2avm")
+
+[node name="TopLeftArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 24
+
+[node name="TopLeftSprite2D" type="Sprite2D" parent="TopLeftArea2D"]
+unique_name_in_owner = true
 position = Vector2(7, -16)
 rotation = 1.5708
 texture = ExtResource("1_1dxpk")
 
-[node name="BottomLeftSprite2D3" type="Sprite2D" parent="."]
-position = Vector2(32, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopLeftArea2D"]
+position = Vector2(7, -16)
+shape = SubResource("RectangleShape2D_gssj3")
+
+[node name="BottomRightArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 24
+
+[node name="BottomRightSprite2D" type="Sprite2D" parent="BottomRightArea2D"]
+unique_name_in_owner = true
+position = Vector2(32, 1)
 texture = ExtResource("1_1dxpk")
 flip_h = true
 
-[node name="BottomLeftSprite2D4" type="Sprite2D" parent="."]
-position = Vector2(32, -10)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomRightArea2D"]
+position = Vector2(32, 1)
+shape = SubResource("RectangleShape2D_jxpug")
+
+[node name="BottomRightArea2D2" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 24
+
+[node name="BottomRightSprite2D2" type="Sprite2D" parent="BottomRightArea2D2"]
+unique_name_in_owner = true
+position = Vector2(32, -9)
 texture = ExtResource("1_1dxpk")
 flip_h = true
 
-[node name="BottomLeftCornerSprite2D2" type="Sprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomRightArea2D2"]
+position = Vector2(32, -9)
+shape = SubResource("RectangleShape2D_iw1cg")
+
+[node name="BottomRightCornerArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 24
+
+[node name="BottomRightCornerSprite2D" type="Sprite2D" parent="BottomRightCornerArea2D"]
+unique_name_in_owner = true
 position = Vector2(24, -9)
 texture = ExtResource("2_q3yps")
 flip_h = true
 
-[node name="BottomLeftTopCornerSprite2D2" type="Sprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomRightCornerArea2D"]
+position = Vector2(24, -9)
+shape = SubResource("RectangleShape2D_8vcfp")
+
+[node name="TopRightCornerArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 24
+
+[node name="TopRightCornerSprite2D" type="Sprite2D" parent="TopRightCornerArea2D"]
+unique_name_in_owner = true
 position = Vector2(33, -17)
 texture = ExtResource("3_uvgbs")
 flip_h = true
 
-[node name="TopLeftSprite2D2" type="Sprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopRightCornerArea2D"]
+position = Vector2(33, -17)
+shape = SubResource("RectangleShape2D_eo828")
+
+[node name="TopRightArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 24
+
+[node name="TopRightSprite2D" type="Sprite2D" parent="TopRightArea2D"]
+unique_name_in_owner = true
 position = Vector2(25, -16)
 rotation = 1.5708
 texture = ExtResource("1_1dxpk")
 flip_h = true
 
-[node name="BottomLeftSprite2D5" type="Sprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopRightArea2D"]
+position = Vector2(25, -16)
+shape = SubResource("RectangleShape2D_10rjw")
+
+[node name="MiddleArea2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 24
+
+[node name="MiddleSprite2D" type="Sprite2D" parent="MiddleArea2D"]
+unique_name_in_owner = true
 position = Vector2(16, -16)
 texture = ExtResource("4_njhbq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MiddleArea2D"]
+position = Vector2(16, -16)
+shape = SubResource("RectangleShape2D_jkm1k")
+
+[connection signal="body_entered" from="BottomLeftArea2D" to="." method="_on_bottom_left_area_2d_body_entered"]
+[connection signal="body_entered" from="BottomLeftArea2D2" to="." method="_on_bottom_left_area_2d_2_body_entered"]
+[connection signal="body_entered" from="BottomLeftCornerArea2D" to="." method="_on_bottom_left_corner_area_2d_body_entered"]
+[connection signal="body_entered" from="TopLeftCornerArea2D" to="." method="_on_top_left_corner_area_2d_body_entered"]
+[connection signal="body_entered" from="TopLeftArea2D" to="." method="_on_top_left_area_2d_body_entered"]
+[connection signal="body_entered" from="BottomRightArea2D" to="." method="_on_bottom_right_area_2d_body_entered"]
+[connection signal="body_entered" from="BottomRightArea2D2" to="." method="_on_bottom_right_area_2d_2_body_entered"]
+[connection signal="body_entered" from="BottomRightCornerArea2D" to="." method="_on_bottom_right_corner_area_2d_body_entered"]
+[connection signal="body_entered" from="TopRightCornerArea2D" to="." method="_on_top_right_corner_area_2d_body_entered"]
+[connection signal="body_entered" from="TopRightArea2D" to="." method="_on_top_right_area_2d_body_entered"]
+[connection signal="body_entered" from="MiddleArea2D" to="." method="_on_middle_area_2d_body_entered"]

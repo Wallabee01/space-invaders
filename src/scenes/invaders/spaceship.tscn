@@ -1,8 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://v0yfkoainxqt"]
+[gd_scene load_steps=5 format=3 uid="uid://v0yfkoainxqt"]
 
+[ext_resource type="Script" uid="uid://cvswtk0r702iy" path="res://src/scenes/invaders/spaceship.gd" id="1_dxo6f"]
 [ext_resource type="Texture2D" uid="uid://cr3xsobak2vhv" path="res://assets/invaders/spaceship.png" id="1_pkhhg"]
+[ext_resource type="AudioStream" uid="uid://c1ncql7eim2ni" path="res://assets/audio/sfx/lowRandom.ogg" id="2_1vqhk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vqhk"]
+size = Vector2(16, 5)
 
 [node name="Spaceship" type="Area2D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_dxo6f")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_1vqhk")
+autoplay = true
+parameters/looping = true
+
+[node name="ShootTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+autostart = true
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 0.063
+autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_pkhhg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1vqhk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

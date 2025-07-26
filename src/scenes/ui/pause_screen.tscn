@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://dukjruu13k03e"]
+
+[ext_resource type="Theme" uid="uid://d2y52dhm20n0l" path="res://resources/ui/themes/ui_theme.tres" id="1_gk7hh"]
+[ext_resource type="Script" uid="uid://dtbrlgiyk54d0" path="res://src/scenes/ui/pause_screen.gd" id="1_xxydi"]
+
+[node name="PauseScreen" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_xxydi")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PauseLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("1_gk7hh")
+text = "PAUSED"
+
+[node name="QuitButton" type="Button" parent="PanelContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("1_gk7hh")
+text = "Quit"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

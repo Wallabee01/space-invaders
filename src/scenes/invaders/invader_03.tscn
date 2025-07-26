@@ -1,8 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://qqdh7hhudr21"]
+[gd_scene load_steps=4 format=3 uid="uid://qqdh7hhudr21"]
 
 [ext_resource type="Texture2D" uid="uid://q8ikf87rygj1" path="res://assets/invaders/invader_03.png" id="1_bgikm"]
+[ext_resource type="Script" uid="uid://dncjitxuqaol1" path="res://src/scenes/invaders/invader_03.gd" id="1_qxsl4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bgikm"]
+size = Vector2(8, 8)
 
 [node name="Invader03" type="Area2D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_qxsl4")
+
+[node name="ShootTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_bgikm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bgikm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
